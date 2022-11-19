@@ -50,3 +50,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# limine specific
+limine
+kernel/limine.h
+
+# osdev 
+ovmf-x64
+*.iso
+*.hdd
