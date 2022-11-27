@@ -3,5 +3,6 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include "asm.h"
 typedef uint8_t bool;
 #endif
