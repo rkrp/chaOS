@@ -2,8 +2,11 @@
 A minimal kernel for x86_64.
 
 # Build
-One needs to setup cross compilation toolchain first. But it should work with gcc present in any 64-bit Linux distros. Run the following in the root of the repo. 
+One needs to setup cross compilation toolchain first. Run the following in the root of the repo 
+to setup cross-compiler toolchain. This should take a few minutes to setup but it is a single
+time thing.  
 
+    ./build_toolchain.sh
     make
 
 This will give chaOS.iso which is a bootable ISO image. 

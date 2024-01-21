@@ -21,7 +21,7 @@ $(eval $(call DEFAULT_VAR,CC,cc))
 $(eval $(call DEFAULT_VAR,LD,ld))
 
 # User controllable CFLAGS.
-override CFLAGS ?= -g -O2 -pipe -Wall -Wextra -Werror 
+override CFLAGS ?= -g -O2 -pipe -Wno-deprecated -Wall -Wextra 
 
 # User controllable preprocessor flags. We set none by default.
 CPPFLAGS ?=
