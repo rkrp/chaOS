@@ -1,4 +1,3 @@
-export PATH :=${PWD}/toolchain/bin/:$(PATH)
 export CC=x86_64-elf-gcc
 
 .PHONY: all

@@ -6,16 +6,22 @@ One needs to setup cross compilation toolchain first. Run the following in the r
 to setup cross-compiler toolchain. This should take a few minutes to setup but it is a single
 time thing.  
 
-    ./build_toolchain.sh
-    make
+## Build toolchain
 
-This will give chaOS.iso which is a bootable ISO image. 
+    cd $CHAOS_SRC/docker/
+    podman build -t chaos_build .
+
+## Build ChaOS
+
+    podman run -v $CHAOS_SRC:/chaos --security-opt label:disable chaos_build make
+
+This will create `chaOS.iso` which is a bootable ISO image. 
 
 # Running and debugging
 
 Running the following will run it in qemu with debug enabled
 
-    make && make run-uefi
+    make run-uefi
 
 # Credits
 Thanks to [limine barebones](https://wiki.osdev.org/Limine_Bare_Bones) for the starting point. 
