@@ -12,7 +12,7 @@ run: chaOS.iso
 
 .PHONY: run-uefi
 run-uefi: ovmf-x64 chaOS.iso
-	qemu-system-x86_64 -M q35 -m 128M -bios ovmf-x64/OVMF.fd -cdrom chaOS.iso -boot d -s -d int,cpu_reset -no-reboot
+	qemu-system-x86_64 -serial stdio -M q35 -m 128M -bios ovmf-x64/OVMF.fd -cdrom chaOS.iso -boot d -s -no-reboot
 
 .PHONY: run-hdd
 run-hdd: chaOS.hdd

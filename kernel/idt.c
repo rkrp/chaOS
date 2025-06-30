@@ -25,10 +25,8 @@ void init_all_idt(void* handler_addr) {
 
 void load_idt() {
     printk("IDTR size: %d\n", sizeof(idtr_t));
-
     init_all_idt(&idt_handler);
     lidt(idt, (256 * sizeof(ids_t)) - 1);
-
 }
 
 

@@ -4,6 +4,7 @@
 #include "string.h"
 
 #include <stdarg.h>
+#include "dev/serial.h"
 
 
 // The Limine requests can be placed anywhere, but it is important that
@@ -15,9 +16,23 @@ static volatile struct limine_terminal_request terminal_request = {
     .revision = 0
 };
 
-inline void puts(char *str, size_t len) {
+inline void puts_terminal(char *str, size_t len) {
     struct limine_terminal *terminal = terminal_request.response->terminals[0];
     terminal_request.response->write(terminal, str, len);
+}
+
+inline void puts_serial(char *str, size_t len) {
+
+    for(size_t i = 0; i < len; i++) {
+        // Wait until the transmit buffer is empty
+        while((inb(COM1_LINE_STATUS) & 0x20) == 0);
+        outb(COM1_TRANSMIT_BUFFER, str[i]);
+    }
+}
+
+inline void puts(char *str, size_t len) {
+    puts_terminal(str, len);
+    puts_serial(str, len);
 }
 
 size_t printk(char *format, ...) {
