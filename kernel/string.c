@@ -28,3 +28,11 @@ int memcmp(const void* a, const void* b, size_t len) {
     }
     return 0;
 }
+
+void memset(void *target, char byte, size_t times) {
+    char* start = (char *) target;
+    char* end = start + times;
+    for(; start < end ; start++) {
+        *start = byte;   
+    }
+}
